@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 
-const API_BASE = "http://localhost:3001";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 function TodoList({ username, onLogout }) {
   const [todos, setTodos] = useState([]);
   const [newTask, setNewTask] = useState("");
   const [activeTodo, setActiveTodo] = useState(null);
 
-  useEffect(() => {
-    fetch(`${API_BASE}/todos/${username}`)
-      .then(res => res.json())
-      .then(data => setTodos(data))
-      .catch(err => console.error("Error fetching todos:", err));
-  }, [username]);
+ const API_BASE = import.meta.env.VITE_API_URL;
+
+useEffect(() => {
+  fetch(`${API_BASE}/todos/${username}`)
+    .then(res => res.json())
+    .then(data => setTodos(data));
+}, [username]);
+
 
   const addTodo = async () => {
     if (newTask.trim() === "") return;
