@@ -1,0 +1,9 @@
+# Dependency folders (Ye bahut bhari hote hain, upload nahi karne)
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Security keys (Ye kabhi upload nahi karni)
+.env
+server/.env
+.DS_Store
